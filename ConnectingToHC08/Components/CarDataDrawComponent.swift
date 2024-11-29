@@ -27,7 +27,7 @@ struct CarDataDrawComponent: View {
                         ZStack {
                             if #available(iOS 17.0, *) {
                                 Rectangle()
-                                    .stroke(Color.gray, lineWidth: 1)
+                                    .stroke(.gray, lineWidth: 1)
                                     .frame(width: 120, height: 30)
                             }
                             HStack(spacing: 10) {
@@ -36,9 +36,16 @@ struct CarDataDrawComponent: View {
                                 }
                             }
                         }.offset(y: 20)
-                        Image(systemName: "car.top.radiowaves.front.fill")
-                            .font(.system(size: 120))
-//                            .foregroundStyle(.orange)
+                        
+                        if data.ultrassonicStatus == 1 {
+                            Image(systemName: "car.top.radiowaves.front.fill")
+                                .font(.system(size: 120))
+                                .foregroundStyle(.yellow)
+                        } else {
+                            Image(systemName: "car.top.radiowaves.front.fill")
+                                .font(.system(size: 120))
+                                .foregroundStyle(data.collisionStatus == 1 ? .red : .white)
+                        }
                     }.padding(.horizontal)
                     
                     DataSquares(data: data)

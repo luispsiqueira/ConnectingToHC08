@@ -65,9 +65,9 @@ struct ControllView: View {
                         viewController.forceStop()
                     }
                 }
-                .onChange(of: viewController.factor) { _ in
-                    viewController.changeValueAndSendToTheCar(.velocityTarget, 120 * viewController.factor)
-                }
+//                .onChange(of: viewController.factor) { _ in
+//                    viewController.changeValueAndSendToTheCar(.velocityTarget, 120 * viewController.factor)
+//                }
                 .navigationTitle("Controle")
                 .toolbar {
                     if viewController.mode == 1 {

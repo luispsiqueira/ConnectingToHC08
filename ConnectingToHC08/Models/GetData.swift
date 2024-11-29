@@ -16,4 +16,6 @@ struct GetData: Codable {
     var velocity: Velocity
     var distanceCovered: Double
     var robotState: Int
+    var collisionStatus: Int
+    var ultrassonicStatus: Int
 }

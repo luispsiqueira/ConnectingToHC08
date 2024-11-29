@@ -19,7 +19,7 @@ class ControllViewController: ObservableObject {
     @Published var velocityTarget = VelocityTarget()
     @Published var someButtonIsBeenPressed: Int = 0
     @Published var selectedIndex: Int = 0
-    @Published var factor: Double = 1.0
+    @Published var factor: Double = 120.0
     
     init(bluetoothController: BluetoothController) {
         self.bluetoothController = bluetoothController

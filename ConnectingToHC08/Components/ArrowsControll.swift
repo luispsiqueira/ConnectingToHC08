@@ -32,8 +32,8 @@ struct ArrowsControll: View {
                     .disabled(!buttonsAreEnable)
                     .onLongPressGesture(minimumDuration: .infinity, pressing: { isPressing in
                         if isPressing {
-                            velocityLeftMotor = velocitytarget.left * factor
-                            velocityRightMotor = velocitytarget.right * factor
+                            velocityLeftMotor = Double(Int(velocitytarget.left * factor / 120))
+                            velocityRightMotor = Double(Int(velocitytarget.right * factor / 120))
                             someButtonIsBeenPressed += 1
                         } else {
                             velocityLeftMotor = 0
@@ -56,11 +56,11 @@ struct ArrowsControll: View {
                         if isPressing {
                             if isMovingFoward {
                                 velocityLeftMotor = 0
-                                velocityRightMotor = velocitytarget.right * factor
+                                velocityRightMotor = Double(Int(velocitytarget.right * factor / 120))
                                 someButtonIsBeenPressed += 1
                             } else {
                                 velocityLeftMotor = 0
-                                velocityRightMotor = -velocitytarget.right * factor
+                                velocityRightMotor = Double(Int(-velocitytarget.right * factor / 120))
                                 someButtonIsBeenPressed += 1
                             }
                         } else {
@@ -80,11 +80,11 @@ struct ArrowsControll: View {
                     .onLongPressGesture(minimumDuration: .infinity, pressing: { isPressing in
                         if isPressing {
                             if isMovingFoward {
-                                velocityLeftMotor = velocitytarget.left * factor
+                                velocityLeftMotor = Double(Int(velocitytarget.left * factor / 120))
                                 velocityRightMotor = 0
                                 someButtonIsBeenPressed += 1
                             } else {
-                                velocityLeftMotor = -velocitytarget.left * factor
+                                velocityLeftMotor = Double(Int(-velocitytarget.left * factor / 120))
                                 velocityRightMotor = 0
                                 someButtonIsBeenPressed += 1
                             }
@@ -109,8 +109,8 @@ struct ArrowsControll: View {
                     .disabled(!buttonsAreEnable)
                     .onLongPressGesture(minimumDuration: .infinity, pressing: { isPressing in
                         if isPressing {
-                            velocityLeftMotor = -velocitytarget.left * factor
-                            velocityRightMotor = -velocitytarget.right * factor
+                            velocityLeftMotor = Double(Int(-velocitytarget.left * factor / 120))
+                            velocityRightMotor = Double(Int(-velocitytarget.right * factor / 120))
                             someButtonIsBeenPressed += 1
                         } else {
                             velocityLeftMotor = 0

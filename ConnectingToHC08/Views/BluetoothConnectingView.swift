@@ -83,7 +83,7 @@ struct BluetoothConnectingView: View {
                         Button(action:{
                             bluetoothController.isConnecting = true
                             for peripheral in bluetoothController.discoveredPeripherals{
-                                if peripheral.name == "Luis's iPad"{
+                                if peripheral.name == "HC-08"{
                                     bluetoothController.connect(peripheral: peripheral)
                                 }
                             }

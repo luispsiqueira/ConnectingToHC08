@@ -10,4 +10,5 @@ import SwiftUI
 struct Gyro: Codable {
     var x: Double
     var y: Double
+    var z: Double
 }

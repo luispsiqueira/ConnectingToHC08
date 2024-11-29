@@ -16,19 +16,19 @@ struct ConnectingToHC08App: App {
 
     var body: some Scene {
         WindowGroup {
-//            if !isConnected {
-//                BluetoothConnectingView(bluetoothController: bluetoothController)
-//                    .environmentObject(appState)
-//                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//            } else {
-//                TabBarView(bluetoothController: bluetoothController)
-//                    .accentColor(.orange)
-//                    .environmentObject(appState)
-//            }
+            if !isConnected {
+                BluetoothConnectingView(bluetoothController: bluetoothController)
+                    .environmentObject(appState)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            } else {
+                TabBarView(bluetoothController: bluetoothController)
+                    .accentColor(.orange)
+                    .environmentObject(appState)
+            }
             
-            TabBarView(bluetoothController: bluetoothController)
-                .accentColor(.orange)
-                .environmentObject(appState)
+//            TabBarView(bluetoothController: bluetoothController)
+//                .accentColor(.orange)
+//                .environmentObject(appState)
         }
         .onChange(of: bluetoothController.isConnected) { x in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

@@ -9,19 +9,43 @@ import SwiftUI
 
 struct ChangeVelocityTarget: View {
     @Binding var velocityTarget: Double
-    @State var velocity = 120.0
+    @State var factor = 120.0
+    @State var isEditing = false
     var body: some View {
-        HStack(spacing: 0) {
-            CustomView($velocity)
-        }
-        .onChange(of: velocity) { _ in
-            velocityTarget = velocity / 120
+//        HStack(spacing: 0) {
+//            CustomView($velocity)
+//        }
+//        .onChange(of: velocity) { _ in
+//            velocityTarget = velocity / 120
+//        }
+        
+        VStack(spacing: 24){
+            Text("Velocidade alvo")
+                .bold()
+                .font(.title3)
+            
+            Slider(value: $factor, in: 60...120) {
+                Text("\(Int(factor))")
+            } minimumValueLabel: {
+                Text("1")
+            } maximumValueLabel: {
+                Text("120")
+            } onEditingChanged: { editing in
+                isEditing = editing
+            }.padding(.horizontal)
+                .onChange(of: factor) {_ in
+                    velocityTarget = factor
+                }
+            
+            
+            Text("\(Int(factor))")
+                .foregroundColor(isEditing ? .blue : .orange)
         }
     }
     
     @ViewBuilder
     private func CustomView(_ velocityTarget: Binding<Double>) -> some View {
-        PickerViewWithoutIndicator(selection: $velocity) {
+        PickerViewWithoutIndicator(selection: $factor) {
             ForEach(0...120, id: \.self){ value in
                 Text("\(value)")
                     .tag(value)

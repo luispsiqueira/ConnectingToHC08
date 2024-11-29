@@ -59,8 +59,9 @@ struct DataSquares: View {
                         VStack {
                             Text("X: \(String(format: "%.2f", data.gyro.x))")
                             Text("Y: \(String(format: "%.2f", data.gyro.y))")
+                            Text("Z: \(String(format: "%.2f", data.gyro.z))")
                         }
-                    }.padding(.bottom, 12)
+                    }
                 }
                 ZStack{
                     RoundedRectangle(cornerRadius: 16)

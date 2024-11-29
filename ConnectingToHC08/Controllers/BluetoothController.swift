@@ -23,7 +23,7 @@ class BluetoothController: NSObject, ObservableObject, CBCentralManagerDelegate,
     @Published var valueReceived: String?
     public var writeCharacteristic: CBCharacteristic?
     @Published var allJSON: String = ""
-    @Published var data = GetData(ultrasonicDistance: 0, batteryCharge: 0, acceleration: Acceleration(x: 0, y: 0, z: 0), gyro: Gyro(x: 0, y: 0), lineSensorData: [0,0,0,0,0], velocity: Velocity(actual: 0, average: 0), distanceCovered: 0, robotState: 0)
+    @Published var data = GetData(ultrasonicDistance: 0, batteryCharge: 0, acceleration: Acceleration(x: 0, y: 0, z: 0), gyro: Gyro(x: 0, y: 0, z: 0), lineSensorData: [0,0,0,0,0], velocity: Velocity(actual: 0, average: 0), distanceCovered: 0, robotState: 0, collisionStatus: 0, ultrassonicStatus: 0)
     
     @Published var appState: AppState?
     
@@ -196,7 +196,6 @@ extension BluetoothController  {
     }
     
     func getDataFromJSON() {
-        print(allJSON)
         allJSON.removeLast()
         guard let jsonData = allJSON.data(using: .utf8) else {
             print("Erro ao converter a string para Data")
@@ -212,11 +211,14 @@ extension BluetoothController  {
             data.acceleration.z = dataFromJSON.acceleration.z
             data.gyro.x = dataFromJSON.gyro.x
             data.gyro.y = dataFromJSON.gyro.y
+            data.gyro.z = dataFromJSON.gyro.z
             data.lineSensorData = dataFromJSON.lineSensorData
             data.velocity.actual = dataFromJSON.velocity.actual
             data.velocity.average = dataFromJSON.velocity.average
             data.distanceCovered = dataFromJSON.distanceCovered
             data.robotState = dataFromJSON.robotState
+            data.collisionStatus = dataFromJSON.collisionStatus
+            data.ultrassonicStatus = dataFromJSON.ultrassonicStatus
         } catch {
             print("Erro ao decodificar JSON: \(error)")
         }

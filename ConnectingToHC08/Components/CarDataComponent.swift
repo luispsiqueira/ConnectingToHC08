@@ -55,9 +55,27 @@ struct CarDataComponent: View {
                 }
                 
                 HStack {
+                    Text("Giroscópio em z:")
+                    Spacer()
+                    Text("\(data.gyro.z)")
+                }
+                
+                HStack {
                     Text("Sensor de linha:")
                     Spacer()
                     Text("\(data.lineSensorData)")
+                }
+                
+                HStack {
+                    Text("Sensor ultrassônico:")
+                    Spacer()
+                    Text("\(data.ultrassonicStatus)")
+                }
+                
+                HStack {
+                    Text("Sensor de colisão:")
+                    Spacer()
+                    Text("\(data.collisionStatus)")
                 }
                 
                 HStack {

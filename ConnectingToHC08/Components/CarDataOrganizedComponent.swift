@@ -17,6 +17,18 @@ struct CarDataOrganizedComponent: View {
                     Spacer()
                     Text("\(data.lineSensorData)")
                 }
+                
+                HStack {
+                    Text("Ultrassônico:")
+                    Spacer()
+                    Text("\(data.ultrassonicStatus)")
+                }
+                
+                HStack {
+                    Text("Colisão:")
+                    Spacer()
+                    Text("\(data.collisionStatus)")
+                }
             }
             
             Section(header: Text("Distâncias")) {
@@ -78,6 +90,12 @@ struct CarDataOrganizedComponent: View {
                     Text("Giroscópio em y:")
                     Spacer()
                     Text("\(data.gyro.y)")
+                }
+                
+                HStack {
+                    Text("Giroscópio em z:")
+                    Spacer()
+                    Text("\(data.gyro.z)")
                 }
             }
             
