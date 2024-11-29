@@ -27,7 +27,7 @@ struct ChangeVelocityTarget: View {
             Slider(value: $factor, in: 60...120) {
                 Text("\(Int(factor))")
             } minimumValueLabel: {
-                Text("1")
+                Text("60")
             } maximumValueLabel: {
                 Text("120")
             } onEditingChanged: { editing in
